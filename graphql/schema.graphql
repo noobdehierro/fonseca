@@ -8,7 +8,9 @@ type Query {
     users: [User!]!
         @guard(with: ["api"])
         @paginate(type: "paginator", model: "App\\Models\\User")
-    user(id: ID @eq): User @find(model: "App\\Models\\User")
+    user(id: ID @eq): User
+        @guard(with: ["api"])
+        @find(model: "App\\Models\\User")
 }
 
 type Mutation {
